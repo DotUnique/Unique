@@ -6,7 +6,7 @@ function get_new_client($ip){
     }
     $filename = "Users/".$ip;
     if(file_exists($filename)){
-        $output = "Already Here";
+        $output = "Error";
     } else {
         $my_file = $ip;
         $handle = fopen("Users/" .$my_file, 'w') or die ('Cannot open file: '.$my_file);
@@ -36,12 +36,11 @@ function get_client_ip() {
 }
 
 function check_client($ip){
-    if(file_exists("Users/".$ip)) {
-        $out = "DONE";
+    if(file_exists("Users/".$ip)){
+        $output = "ONLINE";
     } else {
-        $out = "Error";
+        $output = "ERROR";
     }
-    return $out;
+        return $output;
 }
-
 ?>

